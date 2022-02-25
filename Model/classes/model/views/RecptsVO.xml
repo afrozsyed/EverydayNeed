@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RecptsVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="RecptsEO.RECPT_ID, 
+       RecptsEO.ISSUED_DATE, 
+       RecptsEO.ISSUED_BY, 
+       RecptsEO.CUST_ID, 
+       RecptsEO.AMOUNT, 
+       RecptsEO.PAYMT_MODE"
+  FromList="RECPTS RecptsEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RecptsEO"
+    Entity="model.Entity.RecptsEO"/>
+  <ViewAttribute
+    Name="RecptId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RecptId"
+    EntityUsage="RecptsEO"
+    AliasName="RECPT_ID"/>
+  <ViewAttribute
+    Name="IssuedDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IssuedDate"
+    EntityUsage="RecptsEO"
+    AliasName="ISSUED_DATE"/>
+  <ViewAttribute
+    Name="IssuedBy"
+    PrecisionRule="true"
+    EntityAttrName="IssuedBy"
+    EntityUsage="RecptsEO"
+    AliasName="ISSUED_BY"/>
+  <ViewAttribute
+    Name="CustId"
+    PrecisionRule="true"
+    EntityAttrName="CustId"
+    EntityUsage="RecptsEO"
+    AliasName="CUST_ID"/>
+  <ViewAttribute
+    Name="Amount"
+    PrecisionRule="true"
+    EntityAttrName="Amount"
+    EntityUsage="RecptsEO"
+    AliasName="AMOUNT"/>
+  <ViewAttribute
+    Name="PaymtMode"
+    PrecisionRule="true"
+    EntityAttrName="PaymtMode"
+    EntityUsage="RecptsEO"
+    AliasName="PAYMT_MODE"/>
+  <ViewLinkAccessor
+    Name="PrdtRcptVO"
+    ViewLink="model.Links.PrdtRcptRecptsFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

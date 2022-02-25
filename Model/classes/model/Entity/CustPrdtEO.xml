@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustPrdtEO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="CUST_PRDT"
+  AliasName="CustPrdtEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="model.Entity.CustPrdtEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="CustPrdtId"
+    IsNotNull="true"
+    ColumnName="CUST_PRDT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CUST_PRDT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustId"
+    ColumnName="CUST_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CUST_PRDT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PrdtId"
+    IsNotNull="true"
+    ColumnName="PRDT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CUST_PRDT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="CustomersEO"
+    Association="model.Assoc.CustPrdtCustomersFk1Assoc"
+    AssociationEnd="model.Assoc.CustPrdtCustomersFk1Assoc.CustomersEO"
+    AssociationOtherEnd="model.Assoc.CustPrdtCustomersFk1Assoc.CustPrdtEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="ProductsEO"
+    Association="model.Assoc.CustPrdtProductsFk1Assoc"
+    AssociationEnd="model.Assoc.CustPrdtProductsFk1Assoc.ProductsEO"
+    AssociationOtherEnd="model.Assoc.CustPrdtProductsFk1Assoc.CustPrdtEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="CustPrdtPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CUST_PRDT_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.CustPrdtEO.CustPrdtId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC008378">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C008378"/>
+      <Attr Name="_checkCondition" Value='"CUST_PRDT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.CustPrdtEO.CustPrdtId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CustPrdtCustomersFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CUSTOMERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CUST_PRDT_CUSTOMERS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.CustPrdtEO.CustId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CustPrdtProductsFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PRODUCTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CUST_PRDT_PRODUCTS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.CustPrdtEO.PrdtId"/>
+    </AttrArray>
+  </Key>
+</Entity>

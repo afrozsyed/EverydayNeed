@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PrdtRcptVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="PrdtRcptEO.PRDT_RCPT_ID, 
+       PrdtRcptEO.RCPT_ID, 
+       PrdtRcptEO.PRDT_ID"
+  FromList="PRDT_RCPT PrdtRcptEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PrdtRcptEO"
+    Entity="model.Entity.PrdtRcptEO"/>
+  <ViewAttribute
+    Name="PrdtRcptId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PrdtRcptId"
+    EntityUsage="PrdtRcptEO"
+    AliasName="PRDT_RCPT_ID"/>
+  <ViewAttribute
+    Name="RcptId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RcptId"
+    EntityUsage="PrdtRcptEO"
+    AliasName="RCPT_ID"/>
+  <ViewAttribute
+    Name="PrdtId"
+    PrecisionRule="true"
+    EntityAttrName="PrdtId"
+    EntityUsage="PrdtRcptEO"
+    AliasName="PRDT_ID"/>
+</ViewObject>

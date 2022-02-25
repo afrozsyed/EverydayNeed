@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>StoreTemplate2</display-name>
+        <facet>
+          <description>main</description>
+          <facet-name>Main</facet-name>
+        </facet>
+        <attribute>
+          <attribute-name>title</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelSplitter orientation="vertical" splitterPosition="50" id="pt_ps1"
+                      disabled="true">
+      <f:facet name="first">
+        <af:decorativeBox id="pt_db3">
+          <f:facet name="center">
+            <af:panelSplitter id="pt_ps2" splitterPosition="60" disabled="true">
+              <f:facet name="first">
+                <af:image source="/Images/storeLogo1.png" id="pt_i1"/>
+              </f:facet>
+              <f:facet name="second">
+                <af:outputText value="#{attrs.title}" id="pt_ot1"
+                               inlineStyle="font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:xx-large; color:Green;"/>
+              </f:facet>
+            </af:panelSplitter>
+          </f:facet>
+        </af:decorativeBox>
+      </f:facet>
+      <f:facet name="second">
+        <!-- id="af_one_column_header_stretched_with_splitter"   -->
+        <af:decorativeBox theme="dark" id="pt_db2">
+          <f:facet name="center">
+            <af:decorativeBox theme="medium" id="pt_db1">
+              <f:facet name="center">
+                <af:facetRef facetName="Main"/>
+              </f:facet>
+            </af:decorativeBox>
+          </f:facet>
+        </af:decorativeBox>
+      </f:facet>
+    </af:panelSplitter>
+  </af:pageTemplateDef>
+</jsp:root>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PrdtRcptEO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="PRDT_RCPT"
+  AliasName="PrdtRcptEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="model.Entity.PrdtRcptEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="PrdtRcptId"
+    IsNotNull="true"
+    ColumnName="PRDT_RCPT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PRDT_RCPT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RcptId"
+    IsNotNull="true"
+    ColumnName="RCPT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PRDT_RCPT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PrdtId"
+    ColumnName="PRDT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PRDT_RCPT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="ProductsEO"
+    Association="model.Assoc.PrdtRcptProductsFk1Assoc"
+    AssociationEnd="model.Assoc.PrdtRcptProductsFk1Assoc.ProductsEO"
+    AssociationOtherEnd="model.Assoc.PrdtRcptProductsFk1Assoc.PrdtRcptEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="RecptsEO"
+    Association="model.Assoc.PrdtRcptRecptsFk1Assoc"
+    AssociationEnd="model.Assoc.PrdtRcptRecptsFk1Assoc.RecptsEO"
+    AssociationOtherEnd="model.Assoc.PrdtRcptRecptsFk1Assoc.PrdtRcptEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="PrdtRcptPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRDT_RCPT_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.PrdtRcptEO.PrdtRcptId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC008384">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C008384"/>
+      <Attr Name="_checkCondition" Value='"PRDT_RCPT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.PrdtRcptEO.PrdtRcptId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PrdtRcptProductsFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PRODUCTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PRDT_RCPT_PRODUCTS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.PrdtRcptEO.PrdtId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PrdtRcptRecptsFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="RECPTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PRDT_RCPT_RECPTS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.PrdtRcptEO.RcptId"/>
+    </AttrArray>
+  </Key>
+</Entity>

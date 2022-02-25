@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DepartmentsEO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="DEPARTMENTS"
+  AliasName="DepartmentsEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="DepartmentId"
+    IsNotNull="true"
+    ColumnName="DEPARTMENT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DepartmentName"
+    Precision="20"
+    ColumnName="DEPARTMENT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DEPARTMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="EmployeesEO"
+    Association="model.Assoc.EmpDepFk1Assoc"
+    AssociationEnd="model.Assoc.EmpDepFk1Assoc.EmployeesEO"
+    AssociationOtherEnd="model.Assoc.EmpDepFk1Assoc.DepartmentsEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="DepartmentsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DEPARTMENTS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.DepartmentsEO.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC008356">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C008356"/>
+      <Attr Name="_checkCondition" Value='"DEPARTMENT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.DepartmentsEO.DepartmentId"/>
+    </AttrArray>
+  </Key>
+</Entity>

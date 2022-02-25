@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BranchesVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="BranchesEO.BRANCH_ID, 
+       BranchesEO.BRANCH_NAME, 
+       BranchesEO.ADDRESS, 
+       BranchesEO.MANAGER_ID"
+  FromList="BRANCHES BranchesEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="BranchesEO"
+    Entity="model.Entity.BranchesEO"/>
+  <ViewAttribute
+    Name="BranchId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BranchId"
+    EntityUsage="BranchesEO"
+    AliasName="BRANCH_ID"/>
+  <ViewAttribute
+    Name="BranchName"
+    PrecisionRule="true"
+    EntityAttrName="BranchName"
+    EntityUsage="BranchesEO"
+    AliasName="BRANCH_NAME"/>
+  <ViewAttribute
+    Name="Address"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="BranchesEO"
+    AliasName="ADDRESS"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="BranchesEO"
+    AliasName="MANAGER_ID"/>
+  <ViewLinkAccessor
+    Name="EmployeesVO"
+    ViewLink="model.Links.EmpBrnchFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SupplierVO"
+    ViewLink="model.Links.SupplierBranchFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

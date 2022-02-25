@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RecptsEO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="RECPTS"
+  AliasName="RecptsEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="model.Entity.RecptsEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="RecptId"
+    IsNotNull="true"
+    ColumnName="RECPT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="RECPTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IssuedDate"
+    IsNotNull="true"
+    ColumnName="ISSUED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="RECPTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IssuedBy"
+    ColumnName="ISSUED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="RECPTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustId"
+    ColumnName="CUST_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="RECPTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Amount"
+    ColumnName="AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="RECPTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PaymtMode"
+    Precision="20"
+    ColumnName="PAYMT_MODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="RECPTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="PrdtRcptEO"
+    Association="model.Assoc.PrdtRcptRecptsFk1Assoc"
+    AssociationEnd="model.Assoc.PrdtRcptRecptsFk1Assoc.PrdtRcptEO"
+    AssociationOtherEnd="model.Assoc.PrdtRcptRecptsFk1Assoc.RecptsEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="CustomersEO"
+    Association="model.Assoc.RecptsCustomersFk1Assoc"
+    AssociationEnd="model.Assoc.RecptsCustomersFk1Assoc.CustomersEO"
+    AssociationOtherEnd="model.Assoc.RecptsCustomersFk1Assoc.RecptsEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmployeesEO"
+    Association="model.Assoc.RecptsEmployeesFk1Assoc"
+    AssociationEnd="model.Assoc.RecptsEmployeesFk1Assoc.EmployeesEO"
+    AssociationOtherEnd="model.Assoc.RecptsEmployeesFk1Assoc.RecptsEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="RecptsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="RECPTS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.RecptsEO.RecptId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC008361">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C008361"/>
+      <Attr Name="_checkCondition" Value='"RECPT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.RecptsEO.RecptId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC008362">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C008362"/>
+      <Attr Name="_checkCondition" Value='"ISSUED_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.RecptsEO.IssuedDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="RecptsCustomersFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CUSTOMERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="RECPTS_CUSTOMERS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.RecptsEO.CustId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="RecptsEmployeesFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMPLOYEES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="RECPTS_EMPLOYEES_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.RecptsEO.IssuedBy"/>
+    </AttrArray>
+  </Key>
+</Entity>

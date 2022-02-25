@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SupplierVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="SupplierEO.SUPPLIER_ID, 
+       SupplierEO.SUPPLIER_NAME, 
+       SupplierEO.ADDRESS, 
+       SupplierEO.BRANCH_ID"
+  FromList="SUPPLIER SupplierEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="SupplierEO"
+    Entity="model.Entity.SupplierEO"/>
+  <ViewAttribute
+    Name="SupplierId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SupplierId"
+    EntityUsage="SupplierEO"
+    AliasName="SUPPLIER_ID"/>
+  <ViewAttribute
+    Name="SupplierName"
+    PrecisionRule="true"
+    EntityAttrName="SupplierName"
+    EntityUsage="SupplierEO"
+    AliasName="SUPPLIER_NAME"/>
+  <ViewAttribute
+    Name="Address"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="SupplierEO"
+    AliasName="ADDRESS"/>
+  <ViewAttribute
+    Name="BranchId"
+    PrecisionRule="true"
+    EntityAttrName="BranchId"
+    EntityUsage="SupplierEO"
+    AliasName="BRANCH_ID"/>
+  <ViewLinkAccessor
+    Name="ProductsVO"
+    ViewLink="model.Links.ProdSupFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

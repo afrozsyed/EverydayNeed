@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductsVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="ProductsEO.PRODUCT_ID, 
+       ProductsEO.PRDT_NAME, 
+       ProductsEO.CAT_ID, 
+       ProductsEO.SUPLR_ID, 
+       ProductsEO.PURCH_DATE, 
+       ProductsEO.EXP_DATE, 
+       ProductsEO.COST_PS, 
+       ProductsEO.SELLNG_PS, 
+       ProductsEO.QUNTY, 
+       ProductsEO.UNITS"
+  FromList="PRODUCTS ProductsEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="ProductCatogiryVO1"
+    ViewObjectName="model.views.ProductCatogiryVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SupplierVO1"
+    ViewObjectName="model.views.SupplierVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_CatId"
+    ListVOName="ProductCatogiryVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CatId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CatogiryId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CatogiryName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SuplrId"
+    ListVOName="SupplierVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SuplrId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SupplierId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SupplierName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="ProductsEO"
+    Entity="model.Entity.ProductsEO"/>
+  <ViewAttribute
+    Name="ProductId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="ProductsEO"
+    AliasName="PRODUCT_ID"/>
+  <ViewAttribute
+    Name="PrdtName"
+    PrecisionRule="true"
+    EntityAttrName="PrdtName"
+    EntityUsage="ProductsEO"
+    AliasName="PRDT_NAME"/>
+  <ViewAttribute
+    Name="CatId"
+    PrecisionRule="true"
+    EntityAttrName="CatId"
+    EntityUsage="ProductsEO"
+    AliasName="CAT_ID"
+    LOVName="LOV_CatId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SuplrId"
+    PrecisionRule="true"
+    EntityAttrName="SuplrId"
+    EntityUsage="ProductsEO"
+    AliasName="SUPLR_ID"
+    LOVName="LOV_SuplrId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PurchDate"
+    PrecisionRule="true"
+    EntityAttrName="PurchDate"
+    EntityUsage="ProductsEO"
+    AliasName="PURCH_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.views.ProductsVO.PurchDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.views.ProductsVO.PurchDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExpDate"
+    PrecisionRule="true"
+    EntityAttrName="ExpDate"
+    EntityUsage="ProductsEO"
+    AliasName="EXP_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="model.views.ProductsVO.ExpDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="model.views.ProductsVO.ExpDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CostPs"
+    PrecisionRule="true"
+    EntityAttrName="CostPs"
+    EntityUsage="ProductsEO"
+    AliasName="COST_PS"/>
+  <ViewAttribute
+    Name="SellngPs"
+    PrecisionRule="true"
+    EntityAttrName="SellngPs"
+    EntityUsage="ProductsEO"
+    AliasName="SELLNG_PS"/>
+  <ViewAttribute
+    Name="Qunty"
+    PrecisionRule="true"
+    EntityAttrName="Qunty"
+    EntityUsage="ProductsEO"
+    AliasName="QUNTY"/>
+  <ViewAttribute
+    Name="Units"
+    PrecisionRule="true"
+    EntityAttrName="Units"
+    EntityUsage="ProductsEO"
+    AliasName="UNITS"/>
+  <ViewLinkAccessor
+    Name="PrdtRcptVO"
+    ViewLink="model.Links.PrdtRcptProductsFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="CustPrdtVO"
+    ViewLink="model.Links.CustPrdtProductsFk1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

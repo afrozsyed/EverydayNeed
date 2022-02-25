@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustPrdtVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="CustPrdtEO.CUST_PRDT_ID, 
+       CustPrdtEO.CUST_ID, 
+       CustPrdtEO.PRDT_ID"
+  FromList="CUST_PRDT CustPrdtEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="CustPrdtEO"
+    Entity="model.Entity.CustPrdtEO"/>
+  <ViewAttribute
+    Name="CustPrdtId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CustPrdtId"
+    EntityUsage="CustPrdtEO"
+    AliasName="CUST_PRDT_ID"/>
+  <ViewAttribute
+    Name="CustId"
+    PrecisionRule="true"
+    EntityAttrName="CustId"
+    EntityUsage="CustPrdtEO"
+    AliasName="CUST_ID"/>
+  <ViewAttribute
+    Name="PrdtId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PrdtId"
+    EntityUsage="CustPrdtEO"
+    AliasName="PRDT_ID"/>
+</ViewObject>

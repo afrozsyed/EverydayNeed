@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SupplierEO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="SUPPLIER"
+  AliasName="SupplierEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="model.Entity.SupplierEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="SupplierId"
+    IsNotNull="true"
+    ColumnName="SUPPLIER_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="SUPPLIER"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SupplierName"
+    Precision="20"
+    ColumnName="SUPPLIER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Address"
+    Precision="50"
+    ColumnName="ADDRESS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BranchId"
+    ColumnName="BRANCH_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="SUPPLIER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="ProductsEO"
+    Association="model.Assoc.ProdSupFk1Assoc"
+    AssociationEnd="model.Assoc.ProdSupFk1Assoc.ProductsEO"
+    AssociationOtherEnd="model.Assoc.ProdSupFk1Assoc.SupplierEO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="BranchesEO"
+    Association="model.Assoc.SupplierBranchFk1Assoc"
+    AssociationEnd="model.Assoc.SupplierBranchFk1Assoc.BranchesEO"
+    AssociationOtherEnd="model.Assoc.SupplierBranchFk1Assoc.SupplierEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SupplierPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SUPPLIER_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.SupplierEO.SupplierId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC008358">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C008358"/>
+      <Attr Name="_checkCondition" Value='"SUPPLIER_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.SupplierEO.SupplierId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SupplierBranchFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="BRANCHES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SUPPLIER_BRANCH_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Entity.SupplierEO.BranchId"/>
+    </AttrArray>
+  </Key>
+</Entity>

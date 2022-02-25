@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:form id="f1">
+        <af:pageTemplate viewId="/template/StoreTemplate2.jspx" id="pt1">
+          <f:facet name="Main">
+            <af:panelSplitter id="ps1" orientation="vertical"
+                              splitterPosition="30" disabled="true">
+              <f:facet name="first">
+                <af:menuBar id="mb1">
+                  <af:commandMenuItem text="DashBoard" id="cmi1"
+                                      inlineStyle="font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:medium;"
+                                      selectedText="Select"/>
+                </af:menuBar>
+              </f:facet>
+              <f:facet name="second">
+                <af:panelStretchLayout id="psl1">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:panelTabbed id="pt2">
+                      <af:showDetailItem text="Dashboard" id="sdi1"
+                                         stretchChildren="first"/>
+                      <af:showDetailItem text="Checkout" id="sdi2"/>
+                      <af:showDetailItem text="Products" id="sdi3"/>
+                    </af:panelTabbed>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top"/>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:panelSplitter>
+          </f:facet>
+          <f:attribute name="title" value="EveryDay Needs"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
