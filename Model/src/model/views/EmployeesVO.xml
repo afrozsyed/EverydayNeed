@@ -89,8 +89,8 @@
     PrecisionRule="true"
     EntityAttrName="JoinDate"
     EntityUsage="EmployeesEO"
-    AliasName="JOIN_DATE"
-    DefaultValue="adf.currentdate">
+    AliasName="JOIN_DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
     <Properties>
       <SchemaBasedProperties>
         <FMT_FORMATTER

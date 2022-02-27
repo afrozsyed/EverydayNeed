@@ -26,7 +26,16 @@
                       <af:showDetailItem text="Dashboard" id="sdi1"
                                          stretchChildren="first"/>
                       <af:showDetailItem text="Checkout" id="sdi2"/>
-                      <af:showDetailItem text="Products" id="sdi3"/>
+                      <af:showDetailItem text="Products" id="sdi3"
+                                         stretchChildren="first">
+                        <af:region value="#{bindings.SearchProducts1.regionModel}"
+                                   id="r2"/>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Add Product" id="sdi4"
+                                         stretchChildren="first">
+                        <af:region value="#{bindings.AddProduct1.regionModel}"
+                                   id="r1"/>
+                      </af:showDetailItem>
                     </af:panelTabbed>
                   </f:facet>
                   <f:facet name="start"/>

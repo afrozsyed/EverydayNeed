@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="Add Product" id="pb1" background="medium"
+                   titleHalign="center" showDisclosure="false"
+                   styleClass="AFStretchWidth" inlineStyle="font-size:small;">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1" rows="3" inlineStyle="font-size:medium;">
+          <af:inputText value="#{bindings.ProductId.inputValue}"
+                        label="#{bindings.ProductId.hints.label}"
+                        required="#{bindings.ProductId.hints.mandatory}"
+                        columns="#{bindings.ProductId.hints.displayWidth}"
+                        maximumLength="#{bindings.ProductId.hints.precision}"
+                        shortDesc="#{bindings.ProductId.hints.tooltip}"
+                        id="it2" inlineStyle="font-size:small;">
+            <f:validator binding="#{bindings.ProductId.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.ProductId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.PrdtName.inputValue}"
+                        label="#{bindings.PrdtName.hints.label}"
+                        required="#{bindings.PrdtName.hints.mandatory}"
+                        columns="#{bindings.PrdtName.hints.displayWidth}"
+                        maximumLength="#{bindings.PrdtName.hints.precision}"
+                        shortDesc="#{bindings.PrdtName.hints.tooltip}" id="it4"
+                        inlineStyle="font-size:small;">
+            <f:validator binding="#{bindings.PrdtName.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.CatId.inputValue}"
+                              label="#{bindings.CatId.label}"
+                              required="#{bindings.CatId.hints.mandatory}"
+                              shortDesc="#{bindings.CatId.hints.tooltip}"
+                              id="soc2" inlineStyle="font-size:small;">
+            <f:selectItems value="#{bindings.CatId.items}" id="si3"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.SuplrId.inputValue}"
+                              label="#{bindings.SuplrId.label}"
+                              required="#{bindings.SuplrId.hints.mandatory}"
+                              shortDesc="#{bindings.SuplrId.hints.tooltip}"
+                              id="soc3" inlineStyle="font-size:small;">
+            <f:selectItems value="#{bindings.SuplrId.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.CostPs.inputValue}"
+                        label="#{bindings.CostPs.hints.label}"
+                        required="#{bindings.CostPs.hints.mandatory}"
+                        columns="#{bindings.CostPs.hints.displayWidth}"
+                        maximumLength="#{bindings.CostPs.hints.precision}"
+                        shortDesc="#{bindings.CostPs.hints.tooltip}" id="it3"
+                        inlineStyle="font-size:small;">
+            <f:validator binding="#{bindings.CostPs.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.CostPs.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.SellngPs.inputValue}"
+                        label="#{bindings.SellngPs.hints.label}"
+                        required="#{bindings.SellngPs.hints.mandatory}"
+                        columns="#{bindings.SellngPs.hints.displayWidth}"
+                        maximumLength="#{bindings.SellngPs.hints.precision}"
+                        shortDesc="#{bindings.SellngPs.hints.tooltip}" id="it1"
+                        inlineStyle="font-size:small;">
+            <f:validator binding="#{bindings.SellngPs.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.SellngPs.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Qunty.inputValue}"
+                        label="#{bindings.Qunty.hints.label}"
+                        required="#{bindings.Qunty.hints.mandatory}"
+                        columns="#{bindings.Qunty.hints.displayWidth}"
+                        maximumLength="#{bindings.Qunty.hints.precision}"
+                        shortDesc="#{bindings.Qunty.hints.tooltip}" id="it5"
+                        inlineStyle="font-size:small;">
+            <f:validator binding="#{bindings.Qunty.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.Qunty.format}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.Units.inputValue}"
+                              label="#{bindings.Units.label}"
+                              required="#{bindings.Units.hints.mandatory}"
+                              shortDesc="#{bindings.Units.hints.tooltip}"
+                              id="soc1" inlineStyle="font-size:small;">
+            <f:selectItems value="#{bindings.Units.items}" id="si2"/>
+          </af:selectOneChoice>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:spacer width="10" height="10" id="s1"/>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

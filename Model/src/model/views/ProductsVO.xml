@@ -20,9 +20,12 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  RowClass="model.views.ProductsVORowImpl"
+  ComponentClass="model.views.ProductsVOImpl">
   <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <ViewAccessor
     Name="ProductCatogiryVO1"
@@ -31,6 +34,10 @@
   <ViewAccessor
     Name="SupplierVO1"
     ViewObjectName="model.views.SupplierVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="UnitsVO1"
+    ViewObjectName="model.views.UnitsVO"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_CatId"
@@ -68,6 +75,24 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_Units"
+    ListVOName="UnitsVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Units"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UnitName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="ProductsEO"
     Entity="model.Entity.ProductsEO"/>
@@ -77,13 +102,27 @@
     PrecisionRule="true"
     EntityAttrName="ProductId"
     EntityUsage="ProductsEO"
-    AliasName="PRODUCT_ID"/>
+    AliasName="PRODUCT_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="PrdtName"
     PrecisionRule="true"
     EntityAttrName="PrdtName"
     EntityUsage="ProductsEO"
-    AliasName="PRDT_NAME"/>
+    AliasName="PRDT_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CatId"
     PrecisionRule="true"
@@ -95,6 +134,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <DISPLAYWIDTH
+          Value="20"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -109,6 +150,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <DISPLAYWIDTH
+          Value="20"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -124,6 +167,8 @@
           ResId="model.views.ProductsVO.PurchDate_FMT_FORMATTER"/>
         <FMT_FORMAT
           ResId="model.views.ProductsVO.PurchDate_FMT_FORMAT"/>
+        <DISPLAYWIDTH
+          Value="20"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -139,6 +184,8 @@
           ResId="model.views.ProductsVO.ExpDate_FMT_FORMATTER"/>
         <FMT_FORMAT
           ResId="model.views.ProductsVO.ExpDate_FMT_FORMAT"/>
+        <DISPLAYWIDTH
+          Value="20"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -147,25 +194,132 @@
     PrecisionRule="true"
     EntityAttrName="CostPs"
     EntityUsage="ProductsEO"
-    AliasName="COST_PS"/>
+    AliasName="COST_PS">
+    <DesignTime>
+      <Attr Name="_diagramName" Value="Cost Price"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="SellngPs"
     PrecisionRule="true"
     EntityAttrName="SellngPs"
     EntityUsage="ProductsEO"
-    AliasName="SELLNG_PS"/>
+    AliasName="SELLNG_PS">
+    <DesignTime>
+      <Attr Name="_diagramName" Value="Selling Price"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Qunty"
     PrecisionRule="true"
     EntityAttrName="Qunty"
     EntityUsage="ProductsEO"
-    AliasName="QUNTY"/>
+    AliasName="QUNTY">
+    <DesignTime>
+      <Attr Name="_diagramName" Value="Quantity"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Units"
     PrecisionRule="true"
     EntityAttrName="Units"
     EntityUsage="ProductsEO"
-    AliasName="UNITS"/>
+    AliasName="UNITS"
+    LOVName="LOV_Units">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AddMore"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewCriteria
+    Name="SearchProdct"
+    ViewObjectName="model.views.ProductsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProductId"
+        ViewAttribute="ProductId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="PrdtName"
+        ViewAttribute="PrdtName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ProductsVOCriteria_vcrow0_CatId"
+        ViewAttribute="CatId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SuplrId"
+        ViewAttribute="SuplrId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Qunty"
+        ViewAttribute="Qunty"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="PrdtRcptVO"
     ViewLink="model.Links.PrdtRcptProductsFk1Link"
