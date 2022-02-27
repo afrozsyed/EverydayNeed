@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="AppModule"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   ClearCacheOnRollback="true">
   <DesignTime>
@@ -39,7 +39,16 @@
     ViewObjectName="model.views.ProductsVO"/>
   <ViewUsage
     Name="RecptsVO1"
-    ViewObjectName="model.views.RecptsVO"/>
+    ViewObjectName="model.views.RecptsVO">
+    <ViewCriteriaUsage
+      Name="RecptsVOCriteria"
+      FullName="model.views.RecptsVO.RecptsVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="Date">
+        <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
   <ViewUsage
     Name="SupplierVO1"
     ViewObjectName="model.views.SupplierVO"/>
@@ -82,6 +91,9 @@
   <ViewUsage
     Name="GenderSVO1"
     ViewObjectName="model.views.svo.GenderSVO"/>
+  <ViewUsage
+    Name="SearchVO1"
+    ViewObjectName="model.views.SearchVO"/>
   <ViewLinkUsage
     Name="CustPrdtCustomersFk1Link1"
     ViewLinkObjectName="model.Links.CustPrdtCustomersFk1Link"

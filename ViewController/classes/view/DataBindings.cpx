@@ -9,9 +9,15 @@
   </definitionFactories>
   <pageMap>
     <page path="/Pages/Main.jspx" usageId="view_MainPageDef"/>
+    <page path="/Pages/Dashboard.jsff" usageId="view_DashboardPageDef"/>
+    <page path="/Main.jspx" usageId="view_MainPageDef1"/>
+    <page path="/Pages/Search.jsff" usageId="view_SearchPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_MainPageDef" path="Pages.MainPageDef"/>
+    <page id="view_DashboardPageDef" path="Pages.DashboardPageDef"/>
+    <page id="view_MainPageDef1" path="view.pageDefs.MainPageDef"/>
+    <page id="view_SearchPageDef" path="Pages.SearchPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="model.ApplicationModule"

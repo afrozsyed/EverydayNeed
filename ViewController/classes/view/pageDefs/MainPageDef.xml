@@ -4,6 +4,10 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
+    <taskFlow id="Dashboard_TF1"
+              taskFlowId="/WEB-INF/tf/Dashboard_TF.xml#Dashboard_TF"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
   <bindings/>
 </pageDefinition>

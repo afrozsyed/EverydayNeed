@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="DashboardPageDef" Package="Pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RecptsVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="RecptsVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RecptsVO1Iterator" id="RecptsVO1">
+      <nodeDefinition DefName="model.views.RecptsVO" Name="RecptsVO10">
+        <AttrNames>
+          <Item Value="IssuedDate"/>
+          <Item Value="CustId"/>
+          <Item Value="RecptId"/>
+          <Item Value="Amount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="RecptsVO1Iterator" id="CurrentDate">
+      <AttrNames>
+        <Item Value="CurrentDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

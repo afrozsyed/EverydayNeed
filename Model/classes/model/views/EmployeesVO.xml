@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="EmployeesVO"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   SelectList="EmployeesEO.EMPLOYEE_ID, 
        EmployeesEO.EMP_NAME, 
@@ -89,8 +89,8 @@
     PrecisionRule="true"
     EntityAttrName="JoinDate"
     EntityUsage="EmployeesEO"
-    AliasName="JOIN_DATE"
-    DefaultValue="adf.currentdate">
+    AliasName="JOIN_DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
     <Properties>
       <SchemaBasedProperties>
         <FMT_FORMATTER

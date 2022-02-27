@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout layout="vertical" id="pgl1">
+    <af:panelHeader text="RecptsEO" id="ph1">
+      <af:query id="qryId1" headerText="Search" disclosed="true"
+                value="#{bindings.ImplicitViewCriteriaQuery.queryDescriptor}"
+                model="#{bindings.ImplicitViewCriteriaQuery.queryModel}"
+                queryListener="#{bindings.ImplicitViewCriteriaQuery.processQuery}"
+                queryOperationListener="#{bindings.ImplicitViewCriteriaQuery.processQueryOperation}"
+                resultComponentId="::resId1" saveQueryMode="hidden"
+                modeChangeVisible="false">
+        <af:commandButton text=" Back" id="cb1" action="back"/>
+      </af:query>
+    </af:panelHeader>
+    <af:table value="#{bindings.SearchVO1.collectionModel}" var="row"
+              rows="#{bindings.SearchVO1.rangeSize}"
+              emptyText="#{bindings.SearchVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              fetchSize="#{bindings.SearchVO1.rangeSize}" rowBandingInterval="0"
+              selectedRowKeys="#{bindings.SearchVO1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.SearchVO1.collectionModel.makeCurrent}"
+              rowSelection="single" id="resId1" styleClass="AFStretchWidth">
+      <af:column sortProperty="#{bindings.SearchVO1.hints.Amount.name}"
+                 sortable="false"
+                 headerText="#{bindings.SearchVO1.hints.Amount.label}"
+                 id="resId1c1">
+        <af:outputText value="#{row.Amount}" id="ot5">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.SearchVO1.hints.Amount.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.SearchVO1.hints.CustId.name}"
+                 sortable="false"
+                 headerText="#{bindings.SearchVO1.hints.CustId.label}"
+                 id="resId1c2">
+        <af:outputText value="#{row.CustId}" id="ot1">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.SearchVO1.hints.CustId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.SearchVO1.hints.IssuedBy.name}"
+                 sortable="false"
+                 headerText="#{bindings.SearchVO1.hints.IssuedBy.label}"
+                 id="resId1c3">
+        <af:outputText value="#{row.IssuedBy}" id="ot3">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.SearchVO1.hints.IssuedBy.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.SearchVO1.hints.IssuedDate.name}"
+                 sortable="false"
+                 headerText="#{bindings.SearchVO1.hints.IssuedDate.label}"
+                 id="resId1c4">
+        <af:outputText value="#{row.IssuedDate}" id="ot4">
+          <af:convertDateTime pattern="#{bindings.SearchVO1.hints.IssuedDate.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.SearchVO1.hints.PaymtMode.name}"
+                 sortable="false"
+                 headerText="#{bindings.SearchVO1.hints.PaymtMode.label}"
+                 id="resId1c5">
+        <af:outputText value="#{row.PaymtMode}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SearchVO1.hints.RecptId.name}"
+                 sortable="false"
+                 headerText="#{bindings.SearchVO1.hints.RecptId.label}"
+                 id="resId1c6">
+        <af:outputText value="#{row.RecptId}" id="ot6">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.SearchVO1.hints.RecptId.format}"/>
+        </af:outputText>
+      </af:column>
+    </af:table>
+  </af:panelGroupLayout>
+</jsp:root>

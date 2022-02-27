@@ -24,7 +24,8 @@
                   <f:facet name="center">
                     <af:panelTabbed id="pt2">
                       <af:showDetailItem text="Dashboard" id="sdi1"
-                                         stretchChildren="first"/>
+                                         stretchChildren="first">
+                                             </af:showDetailItem>
                       <af:showDetailItem text="Checkout" id="sdi2"/>
                       <af:showDetailItem text="Products" id="sdi3"/>
                     </af:panelTabbed>

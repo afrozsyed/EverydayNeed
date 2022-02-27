@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelSplitter id="ps1">
+    <f:facet name="first"/>
+    <f:facet name="second">
+      <af:panelGroupLayout
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl1">
+        <af:inputDate value="#{bindings.CurrentDate.inputValue}"
+                      label="#{bindings.CurrentDate.hints.label}"
+                      required="#{bindings.CurrentDate.hints.mandatory}"
+                      shortDesc="#{bindings.CurrentDate.hints.tooltip}"
+                      id="id1">
+          <f:validator binding="#{bindings.CurrentDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.CurrentDate.format}"/>
+        </af:inputDate>
+        <p>
+                                                                                                                                                                                                                                                                                                                                                                                                                <af:commandButton text="Billing"
+                                                                                                                                                                                                                                                                                id="cb1"/>
+        </p>
+        <p>
+                                                                                                                                                                                                                                                                                                                                                                                                                
+          <af:commandButton text="Manage Products" id="cb2"/>
+        </p>
+        <p>
+             
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+          <af:commandButton text="Manage Employees" id="cb3"/>
+        </p>
+        <p>
+                                                                                                                                                                                                                                                                                                                                                                                                                
+          <af:commandButton text="Search" id="cb4" action="search"/>
+        </p>
+        <af:panelGroupLayout layout="vertical" id="pgl2">
+          <af:panelGroupLayout layout="vertical" id="pgl3">
+            <af:table value="#{bindings.RecptsVO1.collectionModel}" var="row"
+                      rows="#{bindings.RecptsVO1.rangeSize}"
+                      emptyText="#{bindings.RecptsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.RecptsVO1.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.RecptsVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.RecptsVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="resId1"
+                      styleClass="AFStretchWidth">
+              <af:column sortProperty="#{bindings.RecptsVO1.hints.IssuedDate.name}"
+                         sortable="false"
+                         headerText="#{bindings.RecptsVO1.hints.IssuedDate.label}"
+                         id="resId1c1">
+                <af:outputText value="#{row.IssuedDate}" id="ot3">
+                  <af:convertDateTime pattern="#{bindings.RecptsVO1.hints.IssuedDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.RecptsVO1.hints.CustId.name}"
+                         sortable="false"
+                         headerText="#{bindings.RecptsVO1.hints.CustId.label}"
+                         id="resId1c2">
+                <af:outputText value="#{row.CustId}" id="ot4">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.RecptsVO1.hints.CustId.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.RecptsVO1.hints.RecptId.name}"
+                         sortable="false"
+                         headerText="#{bindings.RecptsVO1.hints.RecptId.label}"
+                         id="resId1c3">
+                <af:outputText value="#{row.RecptId}" id="ot1">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.RecptsVO1.hints.RecptId.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.RecptsVO1.hints.Amount.name}"
+                         sortable="false"
+                         headerText="#{bindings.RecptsVO1.hints.Amount.label}"
+                         id="resId1c4">
+                <af:outputText value="#{row.Amount}" id="ot2">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.RecptsVO1.hints.Amount.format}"/>
+                </af:outputText>
+              </af:column>
+            </af:table>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelSplitter>
+</jsp:root>
