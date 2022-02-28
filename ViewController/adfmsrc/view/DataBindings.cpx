@@ -9,14 +9,20 @@
   </definitionFactories>
   <pageMap>
     <page path="/Pages/Main.jspx" usageId="view_MainPageDef"/>
-    <page path="/Pages/Dashboard.jsff" usageId="view_DashboardPageDef"/>
+    <page path="/fm/AddProducts.jsff" usageId="view_AddProductsPageDef"/>
+    <page path="/fm/Dashboard.jsff" usageId="view_DashboardPageDef"/>
     <page path="/Main.jspx" usageId="view_MainPageDef1"/>
-    <page path="/Pages/Search.jsff" usageId="view_SearchPageDef"/>
+    <page path="/fm/SearchProducts.jsff" usageId="view_SearchProductsPageDef"/>
+    <page path="/Main.jspx" usageId="view_MainPageDef1"/>
+    <page path="/fm/Search.jsff" usageId="view_SearchPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_MainPageDef" path="Pages.MainPageDef"/>
-    <page id="view_DashboardPageDef" path="Pages.DashboardPageDef"/>
+    <page id="view_AddProductsPageDef" path="fm.AddProductsPageDef"/>
     <page id="view_MainPageDef1" path="view.pageDefs.MainPageDef"/>
+    <page id="view_SearchProductsPageDef" path="fm.SearchProductsPageDef"/>
+    <page id="view_DashboardPageDef" path="Pages.DashboardPageDef"/>
+    <page id="view_MainPageDef2" path="view.pageDefs.MainPageDef"/>
     <page id="view_SearchPageDef" path="Pages.SearchPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>

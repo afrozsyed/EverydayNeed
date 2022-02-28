@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="SearchProductsPageDef" Package="fm">
+  <parameters/>
+  <executables>
+    <iterator Binds="ProductsVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="ProductsVO1Iterator"/>
+    <searchRegion Criteria="SearchProdct"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ProductsVO1Iterator" id="SearchProdctQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProductsVO1Iterator" id="ProductsVO1">
+      <nodeDefinition DefName="model.views.ProductsVO" Name="ProductsVO10">
+        <AttrNames>
+          <Item Value="ProductId"/>
+          <Item Value="PrdtName"/>
+          <Item Value="CatId"/>
+          <Item Value="SuplrId"/>
+          <Item Value="CostPs"/>
+          <Item Value="SellngPs"/>
+          <Item Value="Qunty"/>
+          <Item Value="Units"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

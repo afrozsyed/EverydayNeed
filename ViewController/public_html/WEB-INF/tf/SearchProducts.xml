@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SearchProducts">
+    <default-activity id="__1">SearchProduct</default-activity>
+    <managed-bean id="__2">
+      <managed-bean-name id="__4">SrchPdtBean</managed-bean-name>
+      <managed-bean-class id="__3">view.bean.srchPdtBean</managed-bean-class>
+      <managed-bean-scope id="__5">request</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchProduct">
+      <page>/fm/SearchProducts.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

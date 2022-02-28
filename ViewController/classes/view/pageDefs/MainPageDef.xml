@@ -4,10 +4,25 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
+    <taskFlow id="AddProduct1"
+              taskFlowId="/WEB-INF/tf/AddProduct.xml#AddProduct"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="SearchProducts1"
+              taskFlowId="/WEB-INF/tf/SearchProducts.xml#SearchProducts"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
     <taskFlow id="Dashboard_TF1"
               taskFlowId="/WEB-INF/tf/Dashboard_TF.xml#Dashboard_TF"
               activation="deferred"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="Dashboard_TF2"
+              taskFlowId="/WEB-INF/tf/Dashboard_TF.xml#Dashboard_TF"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
-  <bindings/>
+  <bindings>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
 </pageDefinition>

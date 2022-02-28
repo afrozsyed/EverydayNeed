@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelHeader text="Products" id="ph1">
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.SearchProdctQuery.queryDescriptor}"
+                    model="#{bindings.SearchProdctQuery.queryModel}"
+                    queryListener="#{bindings.SearchProdctQuery.processQuery}"
+                    queryOperationListener="#{bindings.SearchProdctQuery.processQueryOperation}"
+                    resultComponentId="::pc1:resId1" saveQueryMode="hidden"
+                    rows="2" maxColumns="3"/>
+        </af:panelHeader>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.ProductsVO1.collectionModel}" var="row"
+                    rows="#{bindings.ProductsVO1.rangeSize}"
+                    emptyText="#{bindings.ProductsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.ProductsVO1.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.SearchProdctQuery.queryDescriptor}"
+                    queryListener="#{bindings.SearchProdctQuery.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectedRowKeys="#{bindings.ProductsVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.ProductsVO1.collectionModel.makeCurrent}"
+                    rowSelection="single" id="resId1"
+                    styleClass="AFStretchWidth">
+            <af:column id="c1" width="10"/>
+            <af:column sortProperty="ProductId" filterable="true"
+                       sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.ProductId.label}"
+                       id="resId1c1">
+              <af:outputText value="#{row.ProductId}" id="ot2">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProductsVO1.hints.ProductId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="PrdtName" filterable="true" sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.PrdtName.label}"
+                       id="resId1c2">
+              <af:outputText value="#{row.PrdtName}" id="ot3"/>
+            </af:column>
+            <af:column sortProperty="CatId" filterable="true" sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.CatId.label}"
+                       id="resId1c3">
+              <af:selectOneChoice value="#{row.bindings.CatId.inputValue}"
+                                  label="#{row.bindings.CatId.label}"
+                                  required="#{bindings.ProductsVO1.hints.CatId.mandatory}"
+                                  shortDesc="#{bindings.ProductsVO1.hints.CatId.tooltip}"
+                                  id="soc1" readOnly="true">
+                <f:selectItems value="#{row.bindings.CatId.items}" id="si1"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="SuplrId" filterable="true" sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.SuplrId.label}"
+                       id="resId1c4">
+              <af:outputText value="#{row.SuplrId}" id="ot6">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProductsVO1.hints.SuplrId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="CostPs" filterable="true" sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.CostPs.label}"
+                       id="resId1c5">
+              <af:outputText value="#{row.CostPs}" id="ot1">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProductsVO1.hints.CostPs.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="SellngPs" filterable="true" sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.SellngPs.label}"
+                       id="resId1c6">
+              <af:outputText value="#{row.SellngPs}" id="ot4">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProductsVO1.hints.SellngPs.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="Units" filterable="true" sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.Units.label}"
+                       id="resId1c8">
+              <af:selectOneChoice value="#{row.bindings.Units.inputValue}"
+                                  label="#{row.bindings.Units.label}"
+                                  required="#{bindings.ProductsVO1.hints.Units.mandatory}"
+                                  shortDesc="#{bindings.ProductsVO1.hints.Units.tooltip}"
+                                  id="soc2" readOnly="true">
+                <f:selectItems value="#{row.bindings.Units.items}" id="si2"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="Qunty" filterable="true" sortable="true"
+                       headerText="#{bindings.ProductsVO1.hints.Qunty.label}"
+                       id="resId1c7">
+              <af:outputText value="#{row.Qunty}" id="ot7">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProductsVO1.hints.Qunty.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column id="c2">
+              <af:commandButton text="Add more" id="cb1">
+                <af:showPopupBehavior popupId="::p1" triggerType="action"/>
+              </af:commandButton>
+            </af:column>
+          </af:table>
+          <af:popup id="p1" contentDelivery="lazyUncached">
+            <af:dialog id="d1" type="cancel">
+              <af:panelBox text="Add More Products" id="pb1"
+                           showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:inputText label="Add More" id="it1"
+                              value="#{SrchPdtBean.qntynew}"/>
+                <af:commandButton text="Add" id="cb2"
+                                  actionListener="#{SrchPdtBean.updateQnty}"/>
+              </af:panelBox>
+            </af:dialog>
+          </af:popup>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

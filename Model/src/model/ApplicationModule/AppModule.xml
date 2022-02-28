@@ -6,9 +6,13 @@
   Name="AppModule"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
-  ClearCacheOnRollback="true">
+  ClearCacheOnRollback="true"
+  ComponentClass="model.ApplicationModule.AppModuleImpl"
+  ComponentInterface="model.ApplicationModule.common.AppModule"
+  ClientProxyName="model.ApplicationModule.client.AppModuleClient">
   <DesignTime>
     <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <ViewUsage
     Name="BranchesVO1"
@@ -92,6 +96,9 @@
     Name="GenderSVO1"
     ViewObjectName="model.views.svo.GenderSVO"/>
   <ViewUsage
+    Name="UnitsVO1"
+    ViewObjectName="model.views.UnitsVO"/>
+  <ViewUsage
     Name="SearchVO1"
     ViewObjectName="model.views.SearchVO"/>
   <ViewLinkUsage
@@ -166,4 +173,14 @@
     SrcViewUsageName="model.ApplicationModule.AppModule.BranchesVO1"
     DstViewUsageName="model.ApplicationModule.AppModule.SupplierVO2"
     Reversed="false"/>
+  <ClientInterface>
+    <Method
+      Name="AddMore">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="more"
+        Type="int"/>
+    </Method>
+  </ClientInterface>
 </AppModule>
