@@ -2,6 +2,8 @@ package model.ApplicationModule;
 
 import model.ApplicationModule.common.AppModule;
 
+import model.views.CheckOutPVOImpl;
+import model.views.ProductsVOImpl;
 import model.views.ProductsVORowImpl;
 
 import oracle.adf.model.BindingContext;
@@ -12,6 +14,7 @@ import oracle.binding.OperationBinding;
 import oracle.jbo.Row;
 import oracle.jbo.RowSet;
 import oracle.jbo.RowSetIterator;
+import oracle.jbo.ViewCriteria;
 import oracle.jbo.domain.Number;
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
@@ -330,5 +333,47 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
 //    }
 
     public void AddMore(int more) {
+    }
+
+    /**
+     * Container's getter for SearchVO1.
+     * @return SearchVO1
+     */
+    public ViewObjectImpl getSearchVO1() {
+        return (ViewObjectImpl)findViewObject("SearchVO1");
+    }
+
+    /**
+     * Container's getter for CheckOutPVO1.
+     * @return CheckOutPVO1
+     */
+    public CheckOutPVOImpl getCheckOutPVO1() {
+        return (CheckOutPVOImpl)findViewObject("CheckOutPVO1");
+    }
+
+    /**
+     * Container's getter for CheckoutVO1.
+     * @return CheckoutVO1
+     */
+    public ViewObjectImpl getCheckoutVO1() {
+        return (ViewObjectImpl)findViewObject("CheckoutVO1");
+    }
+    
+    public void GetPrdtDetails(String val){
+        ViewObjectImpl vo = this.getProductsVO1();
+               ViewCriteria vc = vo.getViewCriteria("srchPrdt");
+               vo.setNamedWhereClauseParam("PrdtId", val);
+               vo.applyViewCriteria(vc);
+               vo.executeQuery();
+        RowSetIterator rs = vo.createRowSetIterator(null);
+                while (rs.hasNext()) {
+                    Row r = rs.next();
+                    ViewObjectImpl vo1 = this.getCheckOutPVO1();
+                    Row r1 = vo1.createRow();
+                    r1.setAttribute("ItemDesc", r.getAttribute("PrdtName"));
+                    r1.setAttribute("Value", r.getAttribute("SellngPs"));
+                    vo1.insertRow(r1);
+                    
+                }
     }
 }

@@ -7,4 +7,6 @@ import oracle.jbo.ApplicationModule;
 // ---------------------------------------------------------------------
 public interface AppModule extends ApplicationModule {
     void AddMore(int more);
+
+    void GetPrdtDetails(String val);
 }

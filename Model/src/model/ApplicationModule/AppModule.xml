@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="AppModule"
-  Version="11.1.1.64.93"
+  Version="11.1.1.62.29"
   InheritPersonalization="true"
   ClearCacheOnRollback="true"
   ComponentClass="model.ApplicationModule.AppModuleImpl"
@@ -101,6 +101,12 @@
   <ViewUsage
     Name="SearchVO1"
     ViewObjectName="model.views.SearchVO"/>
+  <ViewUsage
+    Name="CheckOutPVO1"
+    ViewObjectName="model.views.CheckOutPVO"/>
+  <ViewUsage
+    Name="CheckoutVO1"
+    ViewObjectName="model.views.CheckoutVO"/>
   <ViewLinkUsage
     Name="CustPrdtCustomersFk1Link1"
     ViewLinkObjectName="model.Links.CustPrdtCustomersFk1Link"
@@ -181,6 +187,14 @@
       <Parameter
         Name="more"
         Type="int"/>
+    </Method>
+    <Method
+      Name="GetPrdtDetails">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="val"
+        Type="java.lang.String"/>
     </Method>
   </ClientInterface>
 </AppModule>

@@ -6,6 +6,11 @@
     <variableIterator id="variables"/>
     <iterator Binds="ProductsVO1" RangeSize="25"
               DataControl="AppModuleDataControl" id="ProductsVO1Iterator"/>
+    <iterator Binds="SupplierVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="SupplierVO1Iterator"/>
+    <iterator Binds="ProductCatogiryVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ProductCatogiryVO1Iterator"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="ProductsVO1Iterator" id="ProductId">
@@ -18,8 +23,6 @@
         <Item Value="PrdtName"/>
       </AttrNames>
     </attributeValues>
-    <list IterBinding="ProductsVO1Iterator" StaticList="false" Uses="LOV_CatId"
-          id="CatId" DTSupportsMRU="false"/>
     <list IterBinding="ProductsVO1Iterator" StaticList="false"
           Uses="LOV_SuplrId" id="SuplrId" DTSupportsMRU="false"/>
     <attributeValues IterBinding="ProductsVO1Iterator" id="CostPs">
@@ -39,5 +42,46 @@
     </attributeValues>
     <list IterBinding="ProductsVO1Iterator" StaticList="false" Uses="LOV_Units"
           id="Units" DTSupportsMRU="false"/>
+    <listOfValues StaticList="false" IterBinding="ProductsVO1Iterator"
+                  Uses="LOV_CatId" id="CatId1"/>
+    <attributeValues IterBinding="SupplierVO1Iterator" id="SupplierId">
+      <AttrNames>
+        <Item Value="SupplierId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SupplierVO1Iterator" id="SupplierName">
+      <AttrNames>
+        <Item Value="SupplierName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SupplierVO1Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductCatogiryVO1Iterator" id="CatogiryId">
+      <AttrNames>
+        <Item Value="CatogiryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductCatogiryVO1Iterator" id="CatogiryName">
+      <AttrNames>
+        <Item Value="CatogiryName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ProductCatogiryVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.ProductCatogiryVO1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SupplierVO1Iterator" id="CreateInsert1"
+            InstanceName="AppModuleDataControl.SupplierVO1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ProductsVO1Iterator" id="CreateInsert2"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
   </bindings>
 </pageDefinition>

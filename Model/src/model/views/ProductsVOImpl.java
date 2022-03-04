@@ -13,4 +13,20 @@ public class ProductsVOImpl extends ViewObjectImpl {
      */
     public ProductsVOImpl() {
     }
+
+    /**
+     * Returns the variable value for PrdtId.
+     * @return variable value for PrdtId
+     */
+    public String getPrdtId() {
+        return (String)ensureVariableManager().getVariableValue("PrdtId");
+    }
+
+    /**
+     * Sets <code>value</code> for variable PrdtId.
+     * @param value value to bind as PrdtId
+     */
+    public void setPrdtId(String value) {
+        ensureVariableManager().setVariableValue("PrdtId", value);
+    }
 }

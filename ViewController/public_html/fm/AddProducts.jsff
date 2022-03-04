@@ -3,13 +3,92 @@
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
   <af:panelStretchLayout id="psl1">
-    <f:facet name="bottom"/>
+    <f:facet name="bottom">
+      <af:panelGroupLayout layout="scroll"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl1">
+        <af:popup id="p1" binding="#{AddPrdt.r2}"
+                  contentDelivery="lazyUncached">
+          <af:dialog id="d1" affirmativeTextAndAccessKey="Save"
+                     title="Add New Supplier"
+                     dialogListener="#{AddPrdt.HandleOKCancel}">
+            <af:panelFormLayout id="pfl2">
+              <af:inputText value="#{bindings.SupplierId.inputValue}"
+                            label="#{bindings.SupplierId.hints.label}"
+                            required="#{bindings.SupplierId.hints.mandatory}"
+                            columns="#{bindings.SupplierId.hints.displayWidth}"
+                            maximumLength="#{bindings.SupplierId.hints.precision}"
+                            shortDesc="#{bindings.SupplierId.hints.tooltip}"
+                            id="it6">
+                <f:validator binding="#{bindings.SupplierId.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.SupplierId.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.SupplierName.inputValue}"
+                            label="#{bindings.SupplierName.hints.label}"
+                            required="#{bindings.SupplierName.hints.mandatory}"
+                            columns="#{bindings.SupplierName.hints.displayWidth}"
+                            maximumLength="#{bindings.SupplierName.hints.precision}"
+                            shortDesc="#{bindings.SupplierName.hints.tooltip}"
+                            id="it7">
+                <f:validator binding="#{bindings.SupplierName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Address.inputValue}"
+                            label="#{bindings.Address.hints.label}"
+                            required="#{bindings.Address.hints.mandatory}"
+                            columns="#{bindings.Address.hints.displayWidth}"
+                            maximumLength="#{bindings.Address.hints.precision}"
+                            shortDesc="#{bindings.Address.hints.tooltip}"
+                            id="it8">
+                <f:validator binding="#{bindings.Address.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:dialog>
+        </af:popup>
+        <af:popup id="p2" contentDelivery="lazyUncached"
+                  binding="#{AddPrdt.r1}">
+          <af:dialog id="d2" title="Add New Category"
+                     affirmativeTextAndAccessKey="Save"
+                     dialogListener="#{AddPrdt.HandleOKCancel}">
+            <af:panelFormLayout id="pfl3">
+              <af:inputText value="#{bindings.CatogiryId.inputValue}"
+                            label="#{bindings.CatogiryId.hints.label}"
+                            required="#{bindings.CatogiryId.hints.mandatory}"
+                            columns="#{bindings.CatogiryId.hints.displayWidth}"
+                            maximumLength="#{bindings.CatogiryId.hints.precision}"
+                            shortDesc="#{bindings.CatogiryId.hints.tooltip}"
+                            id="it9">
+                <f:validator binding="#{bindings.CatogiryId.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.CatogiryId.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.CatogiryName.inputValue}"
+                            label="#{bindings.CatogiryName.hints.label}"
+                            required="#{bindings.CatogiryName.hints.mandatory}"
+                            columns="#{bindings.CatogiryName.hints.displayWidth}"
+                            maximumLength="#{bindings.CatogiryName.hints.precision}"
+                            shortDesc="#{bindings.CatogiryName.hints.tooltip}"
+                            id="it10">
+                <f:validator binding="#{bindings.CatogiryName.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:dialog>
+        </af:popup>
+      </af:panelGroupLayout>
+    </f:facet>
     <f:facet name="center">
       <af:panelBox text="Add Product" id="pb1" background="medium"
                    titleHalign="center" showDisclosure="false"
                    styleClass="AFStretchWidth" inlineStyle="font-size:small;">
-        <f:facet name="toolbar"/>
-        <af:panelFormLayout id="pfl1" rows="3" inlineStyle="font-size:medium;">
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:commandToolbarButton actionListener="#{bindings.CreateInsert2.execute}"
+                                     text="Add New"
+                                     disabled="#{!bindings.CreateInsert2.enabled}"
+                                     id="ctb1"/>
+          </af:toolbar>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" rows="8" inlineStyle="font-size:medium;">
           <af:inputText value="#{bindings.ProductId.inputValue}"
                         label="#{bindings.ProductId.hints.label}"
                         required="#{bindings.ProductId.hints.mandatory}"
@@ -30,13 +109,22 @@
                         inlineStyle="font-size:small;">
             <f:validator binding="#{bindings.PrdtName.validator}"/>
           </af:inputText>
-          <af:selectOneChoice value="#{bindings.CatId.inputValue}"
-                              label="#{bindings.CatId.label}"
-                              required="#{bindings.CatId.hints.mandatory}"
-                              shortDesc="#{bindings.CatId.hints.tooltip}"
-                              id="soc2" inlineStyle="font-size:small;">
-            <f:selectItems value="#{bindings.CatId.items}" id="si3"/>
-          </af:selectOneChoice>
+          <af:inputComboboxListOfValues id="catId1Id"
+                                        popupTitle="Search and Select: #{bindings.CatId1.hints.label}"
+                                        value="#{bindings.CatId1.inputValue}"
+                                        label="#{bindings.CatId1.hints.label}"
+                                        model="#{bindings.CatId1.listOfValuesModel}"
+                                        required="#{bindings.CatId1.hints.mandatory}"
+                                        columns="#{bindings.CatId1.hints.displayWidth}"
+                                        shortDesc="#{bindings.CatId1.hints.tooltip}">
+            <f:validator binding="#{bindings.CatId1.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.CatId1.format}"/>
+            <f:facet name="customActions">
+              <af:commandLink text="Add New Category" id="cl1"
+                              actionListener="#{AddPrdt.AddNewCat}"/>
+            </f:facet>
+          </af:inputComboboxListOfValues>
           <af:selectOneChoice value="#{bindings.SuplrId.inputValue}"
                               label="#{bindings.SuplrId.label}"
                               required="#{bindings.SuplrId.hints.mandatory}"
@@ -84,6 +172,26 @@
                               id="soc1" inlineStyle="font-size:small;">
             <f:selectItems value="#{bindings.Units.items}" id="si2"/>
           </af:selectOneChoice>
+          <af:spacer width="10" height="15" id="s2"/>
+          <af:spacer width="10" height="15" id="spacer1"/>
+          <af:spacer width="10" height="15" id="spacer2"/>
+          <af:spacer width="10" height="15" id="spacer3"/>
+          <af:commandButton text="add new supplier" id="cb1"
+                            actionListener="#{AddPrdt.AddNewSup}"/>
+          <f:facet name="footer">
+            <af:group id="g1">
+              <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                text="Save"
+                                disabled="#{!bindings.Commit.enabled}"
+                                id="cb2"/>
+              <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                text="Cancel"
+                                disabled="#{!bindings.Rollback.enabled}"
+                                immediate="true" id="cb3">
+                <af:resetActionListener/>
+              </af:commandButton>
+            </af:group>
+          </f:facet>
         </af:panelFormLayout>
       </af:panelBox>
     </f:facet>

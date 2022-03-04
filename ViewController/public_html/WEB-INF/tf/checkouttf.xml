@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="checkouttf">
+    <default-activity id="__1">CreateInsert</default-activity>
+    <managed-bean id="__8">
+      <managed-bean-name id="__9">ChckOutBean</managed-bean-name>
+      <managed-bean-class id="__11">view.bean.ChckOutBean</managed-bean-class>
+      <managed-bean-scope id="__10">request</managed-bean-scope>
+    </managed-bean>
+    <view id="chkotView">
+      <page>/fm/chkotView.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__2">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">CreateInsert</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">CreateInsert</from-outcome>
+        <to-activity-id id="__7">chkotView</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

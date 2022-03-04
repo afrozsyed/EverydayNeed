@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CheckoutVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="RecptsEO.RECPT_ID, 
+       RecptsEO.ISSUED_DATE, 
+       RecptsEO.PAYMT_MODE, 
+       RecptsEO.ISSUED_BY, 
+       RecptsEO.CUST_ID, 
+       RecptsEO.AMOUNT, 
+       PrdtRcptEO.PRDT_ID, 
+       PrdtRcptEO.PRDT_RCPT_ID, 
+       PrdtRcptEO.RCPT_ID"
+  FromList="RECPTS RecptsEO, PRODUCTS ProductsEO, PRDT_RCPT PrdtRcptEO"
+  Where="RecptsEO.RECPT_ID = PrdtRcptEO.RCPT_ID(+)"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.views.CheckoutVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="RecptsEO"
+    Entity="model.Entity.RecptsEO"/>
+  <EntityUsage
+    Name="ProductsEO"
+    Entity="model.Entity.ProductsEO"
+    SourceUsage="model.views.CheckoutVO.RecptsEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"/>
+  <EntityUsage
+    Name="PrdtRcptEO"
+    Entity="model.Entity.PrdtRcptEO"
+    Association="model.Assoc.PrdtRcptRecptsFk1Assoc"
+    AssociationEnd="model.Assoc.PrdtRcptRecptsFk1Assoc.PrdtRcptEO"
+    SourceUsage="model.views.CheckoutVO.RecptsEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="model.Entity.RecptsEO.RecptId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="model.Entity.PrdtRcptEO.RcptId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="RecptId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RecptId"
+    EntityUsage="RecptsEO"
+    AliasName="RECPT_ID"/>
+  <ViewAttribute
+    Name="IssuedDate"
+    IsUpdateable="while_insert"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IssuedDate"
+    EntityUsage="RecptsEO"
+    AliasName="ISSUED_DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymtMode"
+    PrecisionRule="true"
+    EntityAttrName="PaymtMode"
+    EntityUsage="RecptsEO"
+    AliasName="PAYMT_MODE"/>
+  <ViewAttribute
+    Name="IssuedBy"
+    PrecisionRule="true"
+    EntityAttrName="IssuedBy"
+    EntityUsage="RecptsEO"
+    AliasName="ISSUED_BY"/>
+  <ViewAttribute
+    Name="CustId"
+    PrecisionRule="true"
+    EntityAttrName="CustId"
+    EntityUsage="RecptsEO"
+    AliasName="CUST_ID"/>
+  <ViewAttribute
+    Name="Amount"
+    PrecisionRule="true"
+    EntityAttrName="Amount"
+    EntityUsage="RecptsEO"
+    AliasName="AMOUNT"/>
+  <ViewAttribute
+    Name="PrdtId"
+    PrecisionRule="true"
+    EntityAttrName="PrdtId"
+    EntityUsage="PrdtRcptEO"
+    AliasName="PRDT_ID"/>
+  <ViewAttribute
+    Name="PrdtRcptId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PrdtRcptId"
+    EntityUsage="PrdtRcptEO"
+    AliasName="PRDT_RCPT_ID"/>
+  <ViewAttribute
+    Name="RcptId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RcptId"
+    EntityUsage="PrdtRcptEO"
+    AliasName="RCPT_ID"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="RecptId"/>
+    <Item Value="IssuedDate"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -15,6 +15,9 @@
     <page path="/fm/SearchProducts.jsff" usageId="view_SearchProductsPageDef"/>
     <page path="/Main.jspx" usageId="view_MainPageDef1"/>
     <page path="/fm/Search.jsff" usageId="view_SearchPageDef"/>
+    <page path="/fm/chkotView.jsff" usageId="view_chkotViewPageDef"/>
+    <page path="/WEB-INF/tf/checkouttf.xml#checkouttf@CreateInsert"
+          usageId="view_checkouttf_checkouttf_CreateInsertPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_MainPageDef" path="Pages.MainPageDef"/>
@@ -24,6 +27,9 @@
     <page id="view_DashboardPageDef" path="Pages.DashboardPageDef"/>
     <page id="view_MainPageDef2" path="view.pageDefs.MainPageDef"/>
     <page id="view_SearchPageDef" path="Pages.SearchPageDef"/>
+    <page id="view_chkotViewPageDef" path="fm.chkotViewPageDef"/>
+    <page id="view_checkouttf_checkouttf_CreateInsertPageDef"
+          path="tf.checkouttf_checkouttf_CreateInsertPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="model.ApplicationModule"

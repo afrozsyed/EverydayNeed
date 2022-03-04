@@ -20,6 +20,10 @@
               taskFlowId="/WEB-INF/tf/Dashboard_TF.xml#Dashboard_TF"
               activation="deferred"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="checkouttf1"
+              taskFlowId="/WEB-INF/tf/checkouttf.xml#checkouttf"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
   <bindings>
     <action id="Commit" DataControl="AppModuleDataControl"

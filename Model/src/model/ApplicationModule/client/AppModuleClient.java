@@ -17,5 +17,14 @@ public class AppModuleClient extends ApplicationModuleImpl implements AppModule 
     }
 
     public void AddMore(int more) {
+        Object _ret =
+            this.riInvokeExportedMethod(this,"AddMore",new String [] {"int"},new Object[] {new Integer(more)});
+        return;
+    }
+
+    public void GetPrdtDetails(String val) {
+        Object _ret =
+            this.riInvokeExportedMethod(this,"GetPrdtDetails",new String [] {"java.lang.String"},new Object[] {val});
+        return;
     }
 }

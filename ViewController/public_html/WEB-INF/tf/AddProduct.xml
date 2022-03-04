@@ -2,6 +2,11 @@
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="AddProduct">
     <default-activity id="__1">AddProducts</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__5">AddPrdt</managed-bean-name>
+      <managed-bean-class id="__2">view.bean.AddPrdt</managed-bean-class>
+      <managed-bean-scope id="__4">request</managed-bean-scope>
+    </managed-bean>
     <view id="AddProducts">
       <page>/fm/AddProducts.jsff</page>
     </view>

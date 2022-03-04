@@ -28,7 +28,11 @@
                         <af:region value="#{bindings.Dashboard_TF2.regionModel}"
                                    id="r3"/>
                       </af:showDetailItem>
-                      <af:showDetailItem text="Checkout" id="sdi2"/>
+                      <af:showDetailItem text="Checkout" id="sdi2"
+                                         stretchChildren="first">
+                        <af:region value="#{bindings.checkouttf1.regionModel}"
+                                   id="r4"/>
+                      </af:showDetailItem>
                       <af:showDetailItem text="Products" id="sdi3"
                                          stretchChildren="first">
                         <af:region value="#{bindings.SearchProducts1.regionModel}"

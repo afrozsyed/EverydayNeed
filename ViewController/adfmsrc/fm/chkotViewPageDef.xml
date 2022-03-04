@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="chkotViewPageDef" Package="fm">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="GetPrdtDetails_val"
+                IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="CheckoutVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="CheckoutVO1Iterator"/>
+    <iterator id="ProductsVO1Iterator" Binds="ProductsVO1"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator Binds="CheckOutPVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="CheckOutPVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CheckoutVO1Iterator" id="RecptId">
+      <AttrNames>
+        <Item Value="RecptId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CheckoutVO1Iterator" id="IssuedDate">
+      <AttrNames>
+        <Item Value="IssuedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CheckoutVO1Iterator" id="PaymtMode">
+      <AttrNames>
+        <Item Value="PaymtMode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CheckoutVO1Iterator" id="IssuedBy">
+      <AttrNames>
+        <Item Value="IssuedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CheckoutVO1Iterator" id="CustId">
+      <AttrNames>
+        <Item Value="CustId"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="GetPrdtDetails"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="GetPrdtDetails"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="val" NDType="java.lang.String"
+                 NDValue="${bindings.GetPrdtDetails_val}"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="val">
+      <AttrNames>
+        <Item Value="GetPrdtDetails_val"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CheckOutPVO1Iterator" id="CheckOutPVO1">
+      <nodeDefinition DefName="model.views.CheckOutPVO" Name="CheckOutPVO10">
+        <AttrNames>
+          <Item Value="ItemDesc"/>
+          <Item Value="Qnty"/>
+          <Item Value="Value"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -27,6 +27,10 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <Variable
+    Name="PrdtId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
     Name="ProductCatogiryVO1"
     ViewObjectName="model.views.ProductCatogiryVO"
@@ -42,9 +46,9 @@
   <ListBinding
     Name="LOV_CatId"
     ListVOName="ProductCatogiryVO1"
-    ListRangeSize="-1"
-    NullValueFlag="start"
-    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    ListRangeSize="25"
+    NullValueFlag="none"
+    NullValueId="LOV_CatId_LOVUIHints_NullValueId"
     MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="CatId"/>
@@ -55,7 +59,8 @@
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="CatogiryName"/>
     </AttrArray>
-    <DisplayCriteria/>
+    <DisplayCriteria
+      Hint="hide"/>
   </ListBinding>
   <ListBinding
     Name="LOV_SuplrId"
@@ -132,10 +137,10 @@
     LOVName="LOV_CatId">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="choice"/>
         <DISPLAYWIDTH
           Value="20"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -317,6 +322,42 @@
         ViewAttribute="Qunty"
         Operator="="
         Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="srchPrdt"
+    ViewObjectName="model.views.ProductsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow23"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProductId"
+        ViewAttribute="ProductId"
+        Operator="="
+        Conjunction="AND"
+        Value=":PrdtId"
+        IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
